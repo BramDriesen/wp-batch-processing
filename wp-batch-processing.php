@@ -26,7 +26,7 @@ require_once 'includes/class-batch-processor-admin.php';
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
 	require_once 'includes/class-wp-cli.php';
 
-	$wp_cli_command = new Batch_Processor_CLI_Command();
+	$wp_cli_command = new WP_Batch_Processor_CLI_Command();
 	WP_CLI::add_command( 'batch_process', $wp_cli_command );
 }
 
@@ -46,3 +46,4 @@ WP_Batch_Processor::boot();
 
 // Examples
 // require_once 'examples/class-example-batch.php';
+
