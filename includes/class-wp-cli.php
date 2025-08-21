@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 /**
  * Class Batch_Processor_CLI_Command().
  */
-class Batch_Processor_CLI_Command extends WP_CLI_Command {
+class WP_Batch_Processor_CLI_Command extends WP_CLI_Command {
 
 	/**
 	 * Process a registered batch by ID.
