@@ -14,6 +14,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
+require_once 'includes/class-bp-helper.php';
+require_once 'includes/class-bp-singleton.php';
+require_once 'includes/class-batch-item.php';
+require_once 'includes/class-batch.php';
+require_once 'includes/class-batch-processor.php';
+require_once 'includes/class-batch-ajax-handler.php';
+require_once 'includes/class-batch-list-table.php';
+require_once 'includes/class-batch-processor-admin.php';
+
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+	require_once 'includes/class-wp-cli.php';
+
+	$wp_cli_command = new Batch_Processor_CLI_Command();
+	WP_CLI::add_command( 'batch_process', $wp_cli_command );
+}
+
 if ( ! is_admin() ) {
 	return;
 }
@@ -25,15 +41,6 @@ if ( ! defined( 'WP_BP_PATH' ) ) {
 if ( ! defined( 'WP_BP_URL' ) ) {
 	define( 'WP_BP_URL', plugin_dir_url( __FILE__ ) );
 }
-
-require_once 'includes/class-bp-helper.php';
-require_once 'includes/class-bp-singleton.php';
-require_once 'includes/class-batch-item.php';
-require_once 'includes/class-batch.php';
-require_once 'includes/class-batch-processor.php';
-require_once 'includes/class-batch-ajax-handler.php';
-require_once 'includes/class-batch-list-table.php';
-require_once 'includes/class-batch-processor-admin.php';
 
 WP_Batch_Processor::boot();
 
